@@ -1,18 +1,61 @@
 .App {
   display: flex;
   justify-content: center;
-  .App__wrapper{
+
+  .App__wrapper {
     max-width: 560px;
     padding: 0 16px;
-    ul{
+
+    .App__header {
+      text-align: center;
+      font-weight: 800;
+    }
+    .App__introduction {
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .App__input {
+      width: 100%;
+      padding: 8px;
+      height: 40px;
+      font-size: 18px;
+      margin: 16px 0;
+    }
+
+    ul {
       list-style: none;
       padding: 0;
     }
   }
 }
 
-.Card__avatar{
-  width: 96px;
-  height: 96px;
-  background-color: rgb(235, 235, 235);
+.Card {
+  display: flex;
+  background-color: white;
+  padding: 16px;
+  margin: 0 0 16px 0;
+  border-radius: 8px;
+  box-shadow: 0 1.4px 1.7px rgba(0, 0, 0, 0.017),
+    0 3.8px 4.6px rgba(0, 0, 0, 0.025), 0 9px 11.2px rgba(0, 0, 0, 0.033),
+    0 30px 37px rgba(0, 0, 0, 0.05);
+
+  .Card__avatar {
+    width: 96px;
+    height: 96px;
+    background-color: rgb(235, 235, 235);
+  }
+
+  .Card__text-container {
+    padding: 0 0 0 8px;
+
+    .Card__name {
+      font-weight: 700;
+      font-size: 22px;
+      margin: 0;
+    }
+    .Card__description {
+      font-size: 14px;
+    }
+  }
 }

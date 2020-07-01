@@ -17,6 +17,7 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div className="Card">
+      
       <div className="Card__avatar">
         <img src={avatar} width="96" height="96" alt="" />
       </div>
