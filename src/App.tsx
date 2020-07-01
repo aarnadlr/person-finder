@@ -12,8 +12,6 @@ interface Person {
 }
 
 function App() {
-  // text input value
-  const [inputVal, setInputVal] = useState<string>('');
 
   //data array
   const [fullDataArray] = useState(mockData);
@@ -30,10 +28,10 @@ function App() {
 
   useEffect(() => {
     // every time the user types, check if the searchTerm is present in the name. If so, include that person in the array.
-    const results = fullDataArray.filter(personObj =>
-      // @ts-ignore
-      personObj.name.toLowerCase().includes(searchTerm)
+    const results = fullDataArray.filter(
+      (personObj) => ( personObj.name.toLowerCase().includes(searchTerm.toLowerCase()))
     );
+
     // store the filtered results in state
     setSearchResults(results);
   }, [fullDataArray, searchTerm]);
@@ -54,7 +52,6 @@ function App() {
           name="type-a-name"
           id="type-a-name"
           placeholder="Type a name"
-          // value={inputVal}
           value={searchTerm}
           onChange={(e) => handleChange(e)}
         />
