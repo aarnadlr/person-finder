@@ -4,7 +4,17 @@ import { Card } from './components/Card';
 import mockData from './MOCK_DATA.json';
 
 function App() {
-  const [data] = useState(mockData);
+
+  // text input value
+  const [inputVal, setInputVal] = useState<string>('');
+
+  //data array
+  const [data, setData] = useState(mockData);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value: string = e.target.value;
+    setInputVal(value)
+  };
 
   return (
     <div className="App">
@@ -22,6 +32,8 @@ function App() {
           name="type-a-name"
           id="type-a-name"
           placeholder="Type a name"
+          value={inputVal}
+          onChange={(e)=>handleChange(e)}
         />
 
         <ul>
