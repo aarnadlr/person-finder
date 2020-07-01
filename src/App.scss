@@ -61,3 +61,14 @@
     }
   }
 }
+
+// recommended way to add label for screenreaders, but make non-visible.
+// https://webaim.org/techniques/css/invisiblecontent/
+.hidden-but-accessible {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

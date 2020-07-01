@@ -12,7 +12,6 @@ interface Person {
 }
 
 function App() {
-
   //data array
   const [fullDataArray] = useState(mockData);
 
@@ -30,12 +29,12 @@ function App() {
 
   useEffect(() => {
     inputRef && inputRef.current && inputRef.current.focus();
-  },[])
+  }, []);
 
   useEffect(() => {
-    // every time the user types, check if the searchTerm is present in the name. If so, include that person in the array.
-    const results = fullDataArray.filter(
-      (personObj) => ( personObj.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    // each time the user types, check if the searchTerm is present in the name. If so, include that person in the array.
+    const results = fullDataArray.filter((person) =>
+      person.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     // store the filtered results in state
@@ -52,16 +51,22 @@ function App() {
           are looking for below into the search box!
         </p>
 
-        <input
-          className="App__input"
-          type="text"
-          name="type-a-name"
-          id="type-a-name"
-          placeholder="Type a name"
-          value={searchTerm}
-          onChange={(e) => handleChange(e)}
-          ref={inputRef}
-        />
+        <form>
+          <label className="hidden-but-accessible" htmlFor="name-input">
+            Name
+          </label>
+          <input
+            className="App__input"
+            type="text"
+            name="name-input"
+            id="name-input"
+            placeholder="Type a name"
+            value={searchTerm}
+            onChange={(e) => handleChange(e)}
+            ref={inputRef}
+            aria-label="Name input"
+          />
+        </form>
 
         <ul>
           {searchResults.map((person, index) => (
