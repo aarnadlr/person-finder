@@ -1,20 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 import { Card } from './components/Card';
 import mockData from './MOCK_DATA.json';
 
-function App() {
+interface Person {
+  id?: number;
+  name?: string;
+  email?: string;
+  avatar?: string;
+  description?: string;
+}
 
+function App() {
   // text input value
   const [inputVal, setInputVal] = useState<string>('');
 
   //data array
-  const [data, setData] = useState(mockData);
+  const [fullDataArray] = useState(mockData);
+
+  // user's string
+  const [searchTerm, setSearchTerm] = React.useState<string>('');
+
+  // filtered array
+  const [searchResults, setSearchResults] = React.useState<Array<Person>>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value: string = e.target.value;
-    setInputVal(value)
+    setSearchTerm(e.target.value);
   };
+
+  useEffect(() => {
+    // every time the user types, check if the searchTerm is present in the name. If so, include that person in the array.
+    const results = fullDataArray.filter(personObj =>
+      // @ts-ignore
+      personObj.name.toLowerCase().includes(searchTerm)
+    );
+    // store the filtered results in state
+    setSearchResults(results);
+  }, [fullDataArray, searchTerm]);
 
   return (
     <div className="App">
@@ -32,19 +54,18 @@ function App() {
           name="type-a-name"
           id="type-a-name"
           placeholder="Type a name"
-          value={inputVal}
-          onChange={(e)=>handleChange(e)}
+          // value={inputVal}
+          value={searchTerm}
+          onChange={(e) => handleChange(e)}
         />
 
         <ul>
-          {data.map((person, index) => (
+          {searchResults.map((person, index) => (
             <li key={index}>
               <Card
-                id={person.id}
-                name={person.name}
-                email={person.email}
-                avatar={person.avatar}
-                description={person.description}
+                name={person && person.name}
+                avatar={person && person.avatar}
+                description={person && person.description}
               />
             </li>
           ))}

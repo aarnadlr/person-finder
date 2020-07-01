@@ -1,17 +1,13 @@
 import React from 'react';
 
 interface CardProps {
-  id?: number;
   name?: string;
-  email?: string;
   avatar?: string;
   description?: string;
 }
 
 export const Card: React.FC<CardProps> = ({
-  id,
   name,
-  email,
   avatar,
   description,
 }) => {
