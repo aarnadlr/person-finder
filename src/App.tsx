@@ -1,12 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.scss';
+import { Card } from './components/Card';
+import mockData from './MOCK_DATA.json';
 
 function App() {
+
+  const [data] = useState(mockData);
+
   return (
     <div className="App">
-      <h1>The Person Finder</h1>
-      <p>If you just can’t find someone and need to know what they look like, you’ve come to the right place! Just type the name of the person you are looking for below into the search box!</p>
+      <div className="App__wrapper">
+        <h1 style={{ textAlign: 'center' }}>The Person Finder</h1>
+        <p style={{ textAlign: 'left' }}>
+          If you just can’t find someone and need to know what they look like,
+          you’ve come to the right place! Just type the name of the person you
+          are looking for below into the search box!
+        </p>
+
+        <input
+          type="text"
+          name="type-a-name"
+          id="type-a-name"
+          placeholder="Type a name"
+        />
+
+        <ul>
+          {data.map((person, index) => (
+            <li key={index}>
+              <Card
+                id={person.id}
+                name={person.name}
+                email={person.email}
+                avatar={person.avatar}
+                description={person.description}
+              />
+            </li>
+          ))}
+        </ul>
+
+      </div>
     </div>
   );
 }
