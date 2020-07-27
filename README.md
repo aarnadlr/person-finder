@@ -1,3 +1,20 @@
+## Person Finder
+
+On mount, Person Finder renders a list of people (name, avatar and description). The search box allows the user to filter out the list by the name property in real-time.
+
+
+✅ TypeScript
+
+✅ Input received focus on mount using useRef
+
+✅ Text input with accessible (but hidden) label element
+
+✅ Client-side filtering
+
+✅ Resilient person-filtering: Comparison works whether user types uppercase or lowercase name characters.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
